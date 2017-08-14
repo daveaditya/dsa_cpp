@@ -1,106 +1,126 @@
 #include <iostream>
-#include "node.cpp"
 
+#ifndef NODE_INCLUDED
+#include "node.cpp"
+#endif
 
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "ClangTidyInspection"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
-
 
 using namespace std;
 
 template <class T>
-class SinglyLinkedList {
+class SinglyLinkedList: public CommonMethods {
 private:
     SinglyNode<T> *head = nullptr;
     int size = 0;
 
+    void destroy(SinglyNode<T> *node);
+
 public:
+
     SinglyLinkedList() = default;
 
     explicit SinglyLinkedList(T value) {
         head = new SinglyNode<T>(value);
     }
 
-    int getSize() const {
+    ~SinglyLinkedList() {
+        if (head != nullptr) {
+            destroy(head);
+        }
+    }
+
+    inline int getSize() override {
         return size;
     }
 
-    inline bool isEmpty() {
+    inline bool isEmpty() override {
         return (size == 0);
     }
 
     void clear();
 
-    void getRepr();
+    void print() override;
 
     // Linked List algorithms
-    void insert_end(T value);
+    void insertEnd(T value);
 
-    void insert_front(T value);
+    void insertFront(T value);
 
-    void insert_at(int pos, T value);
+    void insertAt(int pos, T value);
 
-    T delete_front();
+    T deleteFront();
 
-    T delete_end();
+    T deleteEnd();
 
-    T delete_at(int pos);
+    T deleteAt(int pos);
 };
 
 
 template <class T>
-void SinglyLinkedList<T>::insert_end(T value) {
-    auto *newNode = new SinglyNode<T>();
-    newNode->setData(value);
+void SinglyLinkedList<T>::destroy(SinglyNode<T> *node) {
+    if (node->getNext() != nullptr) {
+        destroy(node->getNext());
+    }
+    delete node;
+}
+
+
+template <class T>
+void SinglyLinkedList<T>::insertEnd(T value) {
+    auto *new_node = new SinglyNode<T>();
+    new_node->setData(value);
     if(head == nullptr) {
-        head = newNode;
+        head = new_node;
     } else {
         SinglyNode<T> *temp = head;
         while (temp->getNext() != nullptr) {
             temp = temp->getNext();
         }
-        temp->setNext(newNode);
+        temp->setNext(new_node);
     }
     size++;
 }
 
 
 template <class T>
-void SinglyLinkedList<T>::insert_front(T value) {
-    auto *newNode = new SinglyNode<T>();
-    newNode->setData(value);
+void SinglyLinkedList<T>::insertFront(T value) {
+    auto *new_node = new SinglyNode<T>();
+    new_node->setData(value);
     if (head == nullptr) {
-        head = newNode;
+        head = new_node;
         return;
     }
-    newNode->setNext(head);
-    head = newNode;
+    new_node->setNext(head);
+    head = new_node;
     size++;
 }
 
 
 template <class T>
-void SinglyLinkedList<T>::insert_at(int pos, T value) {
+void SinglyLinkedList<T>::insertAt(int pos, T value) {
     if (pos >= getSize()) {
         cerr << "Illegal Index";
         return;
     }
-    auto *newNode = new SinglyNode<T>();
-    newNode->setData(value);
+    auto *new_node = new SinglyNode<T>();
+    new_node->setData(value);
     SinglyNode<T> *temp = head, *prev = temp;
     for (int i = 0; i <= pos; ++i) {
         prev = temp;
         temp = temp->getNext();
     }
-    newNode->setNext(temp);
-    prev->setNext(newNode);
+    new_node->setNext(temp);
+    prev->setNext(new_node);
     size++;
 }
 
 
 template <class T>
-T SinglyLinkedList<T>::delete_front() {
+T SinglyLinkedList<T>::deleteFront() {
     if (head == nullptr) {
         cerr << "Empty List";
         return 0;
@@ -115,7 +135,7 @@ T SinglyLinkedList<T>::delete_front() {
 
 
 template <class T>
-T SinglyLinkedList<T>::delete_end() {
+T SinglyLinkedList<T>::deleteEnd() {
     if (head == nullptr) {
         cerr << "Empty List";
         return 0;
@@ -134,7 +154,7 @@ T SinglyLinkedList<T>::delete_end() {
 
 
 template <class T>
-T SinglyLinkedList<T>::delete_at(int pos) {
+T SinglyLinkedList<T>::deleteAt(int pos) {
     if (head == nullptr) {
         cerr << "Empty List";
         return 0;
@@ -158,19 +178,13 @@ T SinglyLinkedList<T>::delete_at(int pos) {
 
 template <class T>
 void SinglyLinkedList<T>::clear() {
-    auto temp = head;
-    while (temp != nullptr) {
-        auto del = temp;
-        temp = temp->getNext();
-        delete del;
-    }
-    delete head;
+    destroy(head);
+    head = nullptr;
     size = 0;
 }
 
-
 template <class T>
-void SinglyLinkedList<T>::getRepr() {
+void SinglyLinkedList<T>::print() {
     if (size == 0) {
         cout << "Empty" << endl;
         return;
@@ -183,4 +197,6 @@ void SinglyLinkedList<T>::getRepr() {
     }
     cout << " ]" << endl;
 }
+
+#pragma clang diagnostic pop
 #pragma clang diagnostic pop
