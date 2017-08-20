@@ -1,9 +1,7 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
-
-#ifndef DATA_STRUCTURES_NODE_H
-#define DATA_STRUCTURES_NODE_H
+#pragma once
 
 namespace nodes {
 
@@ -170,5 +168,4 @@ namespace nodes {
 
 }
 
-#endif //DATA_STRUCTURES_NODE_H
 #pragma clang diagnostic pop

@@ -1,9 +1,7 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
-
-#ifndef DATA_STRUCTURES_DOUBLYLINKEDLIST_H
-#define DATA_STRUCTURES_DOUBLYLINKEDLIST_H
+#pragma once
 
 #include "node.h"
 
@@ -44,7 +42,5 @@ namespace linked_list {
 }
 
 #include "doubly_linked_list.tpp"
-
-#endif //DATA_STRUCTURES_DOUBLYLINKEDLIST_H
 
 #pragma clang diagnostic pop

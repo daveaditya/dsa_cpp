@@ -1,8 +1,6 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "ClangTidyInspection"
-
-#ifndef DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
-#define DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
+#pragma once
 
 #include "node.h"
 
@@ -51,7 +49,5 @@ namespace linked_list {
 }
 
 #include "singly_linked_list.tpp"
-
-#endif //DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
 
 #pragma clang diagnostic pop
