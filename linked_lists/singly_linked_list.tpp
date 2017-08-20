@@ -4,11 +4,15 @@
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
 
 #include <iostream>
+
 #include "singly_linked_list.h"
 
 using namespace std;
 
-namespace linkedlist {
+template<class T>
+SinglyLinkedList<T>::SinglyLinkedList(T value) {
+    head = new SinglyNode<T>(value);
+}
 
     template <class T>
     void SinglyLinkedList<T>::destroy(SinglyNode<T> *node) {
@@ -18,6 +22,22 @@ namespace linkedlist {
         delete node;
     }
 
+template<class T>
+SinglyLinkedList<T>::~SinglyLinkedList() {
+    if (head != nullptr) {
+        destroy(head);
+    }
+}
+
+template<class T>
+int SinglyLinkedList<T>::getSize() {
+    return size;
+}
+
+template<class T>
+bool SinglyLinkedList<T>::isEmpty() {
+    return (size == 0);
+}
 
     template <class T>
     void SinglyLinkedList<T>::insertEnd(T value) {
@@ -147,8 +167,5 @@ namespace linkedlist {
         }
         cout << " ]" << endl;
     }
-
-}
-
 
 #pragma clang diagnostic pop

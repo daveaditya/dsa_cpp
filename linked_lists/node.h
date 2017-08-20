@@ -5,8 +5,6 @@
 #ifndef DATA_STRUCTURES_NODE_H
 #define DATA_STRUCTURES_NODE_H
 
-namespace linkedlist {
-
     template<class T>
     class SinglyNode {
     private:
@@ -167,8 +165,6 @@ namespace linkedlist {
 
         virtual inline int getSize() = 0;
     };
-
-}
 
 #endif //DATA_STRUCTURES_NODE_H
 #pragma clang diagnostic pop

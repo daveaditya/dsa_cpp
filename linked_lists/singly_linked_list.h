@@ -1,57 +1,50 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ClangTidyInspection"
+
 #ifndef DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
 #define DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
 
 #include "node.h"
 
-namespace linkedlist {
+template<class T>
+class SinglyLinkedList : public CommonMethods {
+private:
+    SinglyNode<T> *head = nullptr;
+    int size = 0;
 
-    template<class T>
-    class SinglyLinkedList : public CommonMethods {
-    private:
-        SinglyNode<T> *head = nullptr;
-        int size = 0;
+    void destroy(SinglyNode<T> *node);
 
-        void destroy(SinglyNode<T> *node);
+public:
 
-    public:
+    SinglyLinkedList() = default;
 
-        SinglyLinkedList() = default;
+    explicit SinglyLinkedList(T value);
 
-        explicit SinglyLinkedList(T value) {
-            head = new SinglyNode<T>(value);
-        }
+    ~SinglyLinkedList();
 
-        ~SinglyLinkedList() {
-            if (head != nullptr) {
-                destroy(head);
-            }
-        }
+    int getSize() override;
 
-        inline int getSize() override {
-            return size;
-        }
+    bool isEmpty() override;
 
-        inline bool isEmpty() override {
-            return (size == 0);
-        }
+    void clear();
 
-        void clear();
+    void print() override;
 
-        void print() override;
+    // Linked List algorithms
+    void insertEnd(T value);
 
-        // Linked List algorithms
-        void insertEnd(T value);
+    void insertFront(T value);
 
-        void insertFront(T value);
+    void insertAt(int pos, T value);
 
-        void insertAt(int pos, T value);
+    T deleteFront();
 
-        T deleteFront();
+    T deleteEnd();
 
-        T deleteEnd();
+    T deleteAt(int pos);
+};
 
-        T deleteAt(int pos);
-    };
-}
-
+#include "singly_linked_list.tpp"
 #endif //DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
+
+#pragma clang diagnostic pop

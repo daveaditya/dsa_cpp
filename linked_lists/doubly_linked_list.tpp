@@ -4,11 +4,28 @@
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
 
 #include <iostream>
+
 #include "doubly_linked_list.h"
 
 using namespace std;
 
-namespace linkedlist {
+template<class T>
+DoublyLinkedList<T>::DoublyLinkedList(T data) {
+    head = new DoublyNode<T>(data);
+    size = 0;
+}
+
+
+template<class T>
+int DoublyLinkedList<T>::getSize() {
+    return size;
+}
+
+template<class T>
+bool DoublyLinkedList<T>::isEmpty() {
+    return size == 0;
+}
+
 
     template <class T>
     void DoublyLinkedList<T>::insertFront(T data) {
@@ -60,7 +77,5 @@ namespace linkedlist {
         }
         cout << " ]" << endl;
     }
-
-}
 
 #pragma clang diagnostic pop

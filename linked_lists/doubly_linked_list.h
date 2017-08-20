@@ -1,46 +1,44 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
+
 #ifndef DATA_STRUCTURES_DOUBLYLINKEDLIST_H
 #define DATA_STRUCTURES_DOUBLYLINKEDLIST_H
 
 #include "node.h"
 
-namespace linkedlist {
+template<class T>
+class DoublyLinkedList : CommonMethods {
+private:
+    DoublyNode<T> *head = nullptr;
+    int size = 0;
 
-    template<class T>
-    class DoublyLinkedList : CommonMethods {
-    private:
-        DoublyNode<T> *head = nullptr;
-        int size = 0;
+public:
+    DoublyLinkedList() = default;
 
-    public:
-        DoublyLinkedList<T>() = default;
+    explicit DoublyLinkedList(T data);
 
-        explicit DoublyLinkedList<T>(T data) {
-            head = new DoublyNode<T>(data);
-            size = 0;
-        }
+    inline bool isEmpty() override;
 
-        inline bool isEmpty() override {
-            return size == 0;
-        }
+    inline int getSize() override;
 
-        inline int getSize() override {
-            return size;
-        }
+    void print() override;
 
-        void print() override;
+    void insertFront(T data);
 
-        void insertFront(T data);
+    void insertEnd(T data);
 
-        void insertEnd(T data);
+    void insertAt(T data, int pos);
 
-        void insertAt(T data, int pos);
+    T deleteFront();
 
-        T deleteFront();
+    T deleteEnd();
 
-        T deleteEnd();
+    T deleteAt(int pos);
+};
 
-        T deleteAt(int pos);
-    };
-}
+#include "doubly_linked_list.tpp"
 
 #endif //DATA_STRUCTURES_DOUBLYLINKEDLIST_H
+
+#pragma clang diagnostic pop
