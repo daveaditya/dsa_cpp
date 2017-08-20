@@ -3,5 +3,25 @@ project(Data_Structures)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp node.cpp SinglyLinkedList.cpp CircularSinglyLinkedList.cpp DoublyLinkedList.cpp)
-add_executable(Data_Structures ${SOURCE_FILES})
+set(
+        SOURCE_FILES
+        main.cpp
+        linked_lists/node.h
+        linked_lists/singly_linked_list.h
+        linked_lists/singly_linked_list.cpp
+        linked_lists/circular_singly_linked_list.h
+        linked_lists/circular_singly_linked_list.cpp
+        linked_lists/doubly_linked_list.h
+        linked_lists/doubly_linked_list.cpp
+)
+
+add_executable(
+        Data_Structures ${SOURCE_FILES}
+)
+
+link_directories(
+        linked_lists
+        array_list
+        queue
+        stack
+)
