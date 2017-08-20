@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 
-    auto *list = new SinglyLinkedList<int>();
+    auto *list = new linked_list::SinglyLinkedList<int>();
     for (int i = 0; i < 9; ++i) {
         list->insertEnd(i);
     }
@@ -24,7 +24,7 @@ int main() {
     list->clear();
     list->print();
 
-    SinglyLinkedList<int> list2;
+    linked_list::SinglyLinkedList<int> list2;
     list2.insertEnd(10);
     list2.insertFront(11);
     list2.print();
@@ -32,7 +32,7 @@ int main() {
     delete list;
 
     cout << "\n\n" << "***CIRCULAR LINKED LIST***" << endl;
-    auto *c_list = new CircularSinglyLinkedList<int>();
+    auto *c_list = new linked_list::CircularSinglyLinkedList<int>();
     for (int i = 0; i < 10; i++) {
         c_list->insertEnd(i);
     }

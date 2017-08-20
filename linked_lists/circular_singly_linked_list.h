@@ -1,46 +1,56 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "ClangTidyInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
+
 #ifndef DATA_STRUCTURES_CIRCULARSINGLYLINKEDLIST_H
 #define DATA_STRUCTURES_CIRCULARSINGLYLINKEDLIST_H
 
 #include "node.h"
 
-template<class T>
-class CircularSinglyLinkedList : public CommonMethods {
-private:
-    CircularNode<T> *head = nullptr;
-    int size = 0;
+namespace linked_list {
 
-    void destroy(CircularNode<T> *node);
+    using namespace nodes;
 
-public:
-    CircularSinglyLinkedList() = default;
+    template<class T>
+    class CircularSinglyLinkedList : public CommonMethods {
+    private:
+        CircularNode<T> *head = nullptr;
+        int size = 0;
 
-    ~CircularSinglyLinkedList();
+        void destroy(CircularNode<T> *node);
 
-    bool isEmpty() override;
+    public:
+        CircularSinglyLinkedList() = default;
 
-    int getSize() override;
+        explicit inline CircularSinglyLinkedList(T data);
 
-    void clear();
+        ~CircularSinglyLinkedList();
 
-    void print() override;
+        inline bool isEmpty() override;
 
-    void insertFront(T data);
+        inline int getSize() override;
 
-    void insertEnd(T data);
+        void clear();
 
-    void insertAt(T data, int pos);
+        void print() override;
 
-    T deleteFront();
+        void insertFront(T data);
 
-    T deleteEnd();
+        void insertEnd(T data);
 
-    T deleteAt(int pos);
-};
+        void insertAt(T data, int pos);
+
+        T deleteFront();
+
+        T deleteEnd();
+
+        T deleteAt(int pos);
+    };
+
+}
 
 #include "circular_singly_linked_list.tpp"
+
 #endif //DATA_STRUCTURES_CIRCULARSINGLYLINKEDLIST_H
 
 #pragma clang diagnostic pop

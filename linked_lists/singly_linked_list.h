@@ -6,45 +6,52 @@
 
 #include "node.h"
 
-template<class T>
-class SinglyLinkedList : public CommonMethods {
-private:
-    SinglyNode<T> *head = nullptr;
-    int size = 0;
+namespace linked_list {
 
-    void destroy(SinglyNode<T> *node);
+    using namespace nodes;
 
-public:
+    template<class T>
+    class SinglyLinkedList : public CommonMethods {
+    private:
+        SinglyNode<T> *head = nullptr;
+        int size = 0;
 
-    SinglyLinkedList() = default;
+        void destroy(SinglyNode<T> *node);
 
-    explicit SinglyLinkedList(T value);
+    public:
 
-    ~SinglyLinkedList();
+        SinglyLinkedList() = default;
 
-    int getSize() override;
+        explicit inline SinglyLinkedList(T value);
 
-    bool isEmpty() override;
+        ~SinglyLinkedList();
 
-    void clear();
+        inline int getSize() override;
 
-    void print() override;
+        inline bool isEmpty() override;
 
-    // Linked List algorithms
-    void insertEnd(T value);
+        void clear();
 
-    void insertFront(T value);
+        void print() override;
 
-    void insertAt(int pos, T value);
+        // Linked List algorithms
+        void insertEnd(T value);
 
-    T deleteFront();
+        void insertFront(T value);
 
-    T deleteEnd();
+        void insertAt(int pos, T value);
 
-    T deleteAt(int pos);
-};
+        T deleteFront();
+
+        T deleteEnd();
+
+        T deleteAt(int pos);
+    };
+
+}
 
 #include "singly_linked_list.tpp"
+
 #endif //DATA_STRUCTURES_SINGLYLINKEDLIST_H_H
 
 #pragma clang diagnostic pop

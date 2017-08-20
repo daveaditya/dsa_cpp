@@ -7,35 +7,41 @@
 
 #include "node.h"
 
-template<class T>
-class DoublyLinkedList : CommonMethods {
-private:
-    DoublyNode<T> *head = nullptr;
-    int size = 0;
+namespace linked_list {
 
-public:
-    DoublyLinkedList() = default;
+    using namespace nodes;
 
-    explicit DoublyLinkedList(T data);
+    template<class T>
+    class DoublyLinkedList : CommonMethods {
+    private:
+        DoublyNode<T> *head = nullptr;
+        int size = 0;
 
-    inline bool isEmpty() override;
+    public:
+        DoublyLinkedList() = default;
 
-    inline int getSize() override;
+        explicit inline DoublyLinkedList(T data);
 
-    void print() override;
+        inline bool isEmpty() override;
 
-    void insertFront(T data);
+        inline int getSize() override;
 
-    void insertEnd(T data);
+        void print() override;
 
-    void insertAt(T data, int pos);
+        void insertFront(T data);
 
-    T deleteFront();
+        void insertEnd(T data);
 
-    T deleteEnd();
+        void insertAt(T data, int pos);
 
-    T deleteAt(int pos);
-};
+        T deleteFront();
+
+        T deleteEnd();
+
+        T deleteAt(int pos);
+    };
+
+}
 
 #include "doubly_linked_list.tpp"
 

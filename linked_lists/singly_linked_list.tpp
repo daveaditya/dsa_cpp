@@ -4,17 +4,25 @@
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
 
 #include <iostream>
-
 #include "singly_linked_list.h"
 
 using namespace std;
 
-template<class T>
-SinglyLinkedList<T>::SinglyLinkedList(T value) {
-    head = new SinglyNode<T>(value);
-}
+namespace linked_list {
 
-    template <class T>
+    template<class T>
+    inline SinglyLinkedList<T>::SinglyLinkedList(T value) {
+        head = new SinglyNode<T>(value);
+    }
+
+    template<class T>
+    inline SinglyLinkedList<T>::~SinglyLinkedList() {
+        if (head != nullptr) {
+            destroy(head);
+        }
+    }
+
+    template<class T>
     void SinglyLinkedList<T>::destroy(SinglyNode<T> *node) {
         if (node->getNext() != nullptr) {
             destroy(node->getNext());
@@ -22,28 +30,24 @@ SinglyLinkedList<T>::SinglyLinkedList(T value) {
         delete node;
     }
 
-template<class T>
-SinglyLinkedList<T>::~SinglyLinkedList() {
-    if (head != nullptr) {
-        destroy(head);
+
+    template<class T>
+    inline int SinglyLinkedList<T>::getSize() {
+        return size;
     }
-}
 
-template<class T>
-int SinglyLinkedList<T>::getSize() {
-    return size;
-}
 
-template<class T>
-bool SinglyLinkedList<T>::isEmpty() {
-    return (size == 0);
-}
+    template<class T>
+    inline bool SinglyLinkedList<T>::isEmpty() {
+        return (size == 0);
+    }
 
-    template <class T>
+
+    template<class T>
     void SinglyLinkedList<T>::insertEnd(T value) {
         auto *new_node = new SinglyNode<T>();
         new_node->setData(value);
-        if(head == nullptr) {
+        if (head == nullptr) {
             head = new_node;
         } else {
             SinglyNode<T> *temp = head;
@@ -56,7 +60,7 @@ bool SinglyLinkedList<T>::isEmpty() {
     }
 
 
-    template <class T>
+    template<class T>
     void SinglyLinkedList<T>::insertFront(T value) {
         auto *new_node = new SinglyNode<T>();
         new_node->setData(value);
@@ -70,7 +74,7 @@ bool SinglyLinkedList<T>::isEmpty() {
     }
 
 
-    template <class T>
+    template<class T>
     void SinglyLinkedList<T>::insertAt(int pos, T value) {
         if (pos >= getSize()) {
             cerr << "Illegal Index";
@@ -89,7 +93,7 @@ bool SinglyLinkedList<T>::isEmpty() {
     }
 
 
-    template <class T>
+    template<class T>
     T SinglyLinkedList<T>::deleteFront() {
         if (head == nullptr) {
             cerr << "Empty List";
@@ -104,7 +108,7 @@ bool SinglyLinkedList<T>::isEmpty() {
     }
 
 
-    template <class T>
+    template<class T>
     T SinglyLinkedList<T>::deleteEnd() {
         if (head == nullptr) {
             cerr << "Empty List";
@@ -123,7 +127,7 @@ bool SinglyLinkedList<T>::isEmpty() {
     }
 
 
-    template <class T>
+    template<class T>
     T SinglyLinkedList<T>::deleteAt(int pos) {
         if (head == nullptr) {
             cerr << "Empty List";
@@ -146,14 +150,14 @@ bool SinglyLinkedList<T>::isEmpty() {
     }
 
 
-    template <class T>
+    template<class T>
     void SinglyLinkedList<T>::clear() {
         destroy(head);
         head = nullptr;
         size = 0;
     }
 
-    template <class T>
+    template<class T>
     void SinglyLinkedList<T>::print() {
         if (size == 0) {
             cout << "Empty" << endl;
@@ -167,5 +171,7 @@ bool SinglyLinkedList<T>::isEmpty() {
         }
         cout << " ]" << endl;
     }
+
+}
 
 #pragma clang diagnostic pop

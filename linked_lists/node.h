@@ -5,6 +5,8 @@
 #ifndef DATA_STRUCTURES_NODE_H
 #define DATA_STRUCTURES_NODE_H
 
+namespace nodes {
+
     template<class T>
     class SinglyNode {
     private:
@@ -165,6 +167,8 @@
 
         virtual inline int getSize() = 0;
     };
+
+}
 
 #endif //DATA_STRUCTURES_NODE_H
 #pragma clang diagnostic pop
