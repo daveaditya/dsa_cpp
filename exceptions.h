@@ -3,6 +3,7 @@
 #include <exception>
 #include <string>
 #include <utility>
+#include <cstring>
 
 class Underflow : public std::exception {
 private:
@@ -13,7 +14,9 @@ public:
 		Underflow::msg = msg;
 	}
 
-	const char *what() const noexcept override;
+	const char *what() const noexcept {
+		return strcat(const_cast<char *>("UNDERFLOW : "), msg);
+	}
 };
 
 
@@ -26,7 +29,9 @@ public:
 		Overflow::msg = msg;
 	}
 
-	const char *what() const noexcept override;
+	const char *what() const noexcept {
+		return strcat(const_cast<char *>("OVERFLOW : "), msg);
+	}
 };
 
 
@@ -39,5 +44,7 @@ public:
 		IllegalPosition::position = position;
 	}
 
-	const char *what() const noexcept override;
+	const char *what() const noexcept {
+		return strcat(const_cast<char *>("Illegal Position : "), reinterpret_cast<const char *>(position));
+	}
 };
