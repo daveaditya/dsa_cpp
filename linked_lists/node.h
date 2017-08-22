@@ -5,166 +5,168 @@
 
 namespace nodes {
 
-    template<class T>
-    class SinglyNode {
-    private:
-        T data;
-        SinglyNode *next;
+	template<class T>
+	class SinglyNode {
+	private:
+		T data;
+		SinglyNode *next;
 
-    public:
-        SinglyNode() = default;
+	public:
+		SinglyNode() = default;
 
-        explicit SinglyNode(T data) {
-            SinglyNode::data = data;
-        }
+		explicit SinglyNode(T data) {
+			SinglyNode::data = data;
+			next = nullptr;
+		}
 
-        void setData(T data) {
-            SinglyNode::data = data;
-        }
+		void setData(T data) {
+			SinglyNode::data = data;
+		}
 
-        virtual void setNext(SinglyNode *next) {
-            SinglyNode::next = next;
-        }
+		virtual void setNext(SinglyNode *next) {
+			SinglyNode::next = next;
+		}
 
-        T getData() {
-            return data;
-        }
+		T getData() {
+			return data;
+		}
 
-        virtual SinglyNode *getNext() {
-            return next;
-        }
-    };
-
-
-    template<class T>
-    class CircularNode {
-    private:
-        T data;
-        CircularNode *next;
-
-    public:
-        CircularNode() {
-            next = this;
-        }
-
-        explicit CircularNode(T data) {
-            CircularNode();
-            CircularNode::data = data;
-        }
-
-        T getData() const {
-            return data;
-        }
-
-        void setData(T data) {
-            CircularNode::data = data;
-        }
-
-        CircularNode *getNext() const {
-            return next;
-        }
-
-        void setNext(CircularNode *next) {
-            CircularNode::next = next;
-        }
-    };
+		virtual SinglyNode *getNext() {
+			return next;
+		}
+	};
 
 
-    template<class T>
-    class DoublyNode {
-    private:
-        DoublyNode *previous;
-        T data;
-        DoublyNode *next;
+	template<class T>
+	class CircularNode {
+	private:
+		T data;
+		CircularNode *next;
 
-    public:
-        DoublyNode() {
-            previous = nullptr;
-            next = nullptr;
-        }
+	public:
+		CircularNode() {
+			next = this;
+		}
 
-        explicit DoublyNode(T data) {
-            DoublyNode();
-            DoublyNode::data = data;
-        }
+		explicit CircularNode(T data) {
+			next = this;
+			CircularNode::data = data;
+		}
 
-        DoublyNode *getPrevious() const {
-            return previous;
-        }
+		T getData() const {
+			return data;
+		}
 
-        void setPrevious(DoublyNode *previous) {
-            DoublyNode::previous = previous;
-        }
+		void setData(T data) {
+			CircularNode::data = data;
+		}
 
-        T getData() const {
-            return data;
-        }
+		CircularNode *getNext() const {
+			return next;
+		}
 
-        void setData(T data) {
-            DoublyNode::data = data;
-        }
-
-        DoublyNode *getNext() const {
-            return next;
-        }
-
-        void setNext(DoublyNode *next) {
-            DoublyNode::next = next;
-        }
-    };
+		void setNext(CircularNode *next) {
+			CircularNode::next = next;
+		}
+	};
 
 
-    template<class T>
-    class CircularDoublyNode {
-    private:
-        CircularDoublyNode *previous;
-        T data;
-        CircularDoublyNode *next;
+	template<class T>
+	class DoublyNode {
+	private:
+		DoublyNode *previous;
+		T data;
+		DoublyNode *next;
 
-    public:
-        CircularDoublyNode() {
-            previous = this;
-            next = this;
-        }
+	public:
+		DoublyNode() {
+			previous = nullptr;
+			next = nullptr;
+		}
 
-        explicit CircularDoublyNode(T data) {
-            CircularDoublyNode();
-            CircularDoublyNode::data = data;
-        }
+		explicit DoublyNode(T data) {
+			previous = nullptr;
+			DoublyNode::data = data;
+			next = nullptr;
+		}
 
-        CircularDoublyNode *getPrevious() const {
-            return previous;
-        }
+		DoublyNode *getPrevious() const {
+			return previous;
+		}
 
-        void setPrevious(CircularDoublyNode *previous) {
-            CircularDoublyNode::previous = previous;
-        }
+		void setPrevious(DoublyNode *previous) {
+			DoublyNode::previous = previous;
+		}
 
-        T getData() const {
-            return data;
-        }
+		T getData() const {
+			return data;
+		}
 
-        void setData(T data) {
-            CircularDoublyNode::data = data;
-        }
+		void setData(T data) {
+			DoublyNode::data = data;
+		}
 
-        CircularDoublyNode *getNext() const {
-            return next;
-        }
+		DoublyNode *getNext() const {
+			return next;
+		}
 
-        void setNext(CircularDoublyNode *next) {
-            CircularDoublyNode::next = next;
-        }
-    };
+		void setNext(DoublyNode *next) {
+			DoublyNode::next = next;
+		}
+	};
 
-    class CommonMethods {
-    public:
-        virtual void print() = 0;
 
-        virtual inline bool isEmpty() = 0;
+	template<class T>
+	class CircularDoublyNode {
+	private:
+		CircularDoublyNode *previous;
+		T data;
+		CircularDoublyNode *next;
 
-        virtual inline int getSize() = 0;
-    };
+	public:
+		CircularDoublyNode() {
+			previous = this;
+			next = this;
+		}
+
+		explicit CircularDoublyNode(T data) {
+			CircularDoublyNode();
+			CircularDoublyNode::data = data;
+		}
+
+		CircularDoublyNode *getPrevious() const {
+			return previous;
+		}
+
+		void setPrevious(CircularDoublyNode *previous) {
+			CircularDoublyNode::previous = previous;
+		}
+
+		T getData() const {
+			return data;
+		}
+
+		void setData(T data) {
+			CircularDoublyNode::data = data;
+		}
+
+		CircularDoublyNode *getNext() const {
+			return next;
+		}
+
+		void setNext(CircularDoublyNode *next) {
+			CircularDoublyNode::next = next;
+		}
+	};
+
+	class CommonMethods {
+	public:
+		virtual void print() = 0;
+
+		virtual inline bool isEmpty() = 0;
+
+		virtual inline int getSize() = 0;
+	};
 
 }
 

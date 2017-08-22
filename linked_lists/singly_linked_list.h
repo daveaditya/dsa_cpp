@@ -1,50 +1,53 @@
+#pragma once
+
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "ClangTidyInspection"
-#pragma once
 
 #include "node.h"
 
 namespace linked_list {
 
-    using namespace nodes;
+	using namespace nodes;
 
-    template<class T>
-    class SinglyLinkedList : public CommonMethods {
-    private:
-        SinglyNode<T> *head = nullptr;
-        int size = 0;
+	template<class T>
+	class SinglyLinkedList : public CommonMethods {
+	private:
+		SinglyNode<T> *head = nullptr;
+		int size = 0;
 
-        void destroy(SinglyNode<T> *node);
+		void destroy(SinglyNode<T> *node);
 
-    public:
+	public:
 
-        SinglyLinkedList() = default;
+		SinglyLinkedList() = default;
 
-        explicit inline SinglyLinkedList(T value);
+		explicit SinglyLinkedList(T value);
 
-        ~SinglyLinkedList();
+		~SinglyLinkedList();
 
-        inline int getSize() override;
+		int getSize() override;
 
-        inline bool isEmpty() override;
+		bool isEmpty() override;
 
-        void clear();
+		void clear();
 
-        void print() override;
+		void print() override;
 
-        // Linked List algorithms
-        void insertEnd(T value);
+		// Linked List algorithms
+		void insertEnd(T value);
 
-        void insertFront(T value);
+		void insertFront(T value);
 
-        void insertAt(int pos, T value);
+		void insertAt(int pos, T value);
 
-        T deleteFront();
+		T deleteFront();
 
-        T deleteEnd();
+		T deleteEnd();
 
-        T deleteAt(int pos);
-    };
+		T deleteAt(int pos);
+
+		T get(int pos);
+	};
 
 }
 

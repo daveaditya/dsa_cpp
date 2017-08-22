@@ -7,43 +7,43 @@
 
 namespace linked_list {
 
-    using namespace nodes;
+	using namespace nodes;
 
-    template<class T>
-    class CircularSinglyLinkedList : public CommonMethods {
-    private:
-        CircularNode<T> *head = nullptr;
-        int size = 0;
+	template<class T>
+	class CircularSinglyLinkedList : public CommonMethods {
+	private:
+		CircularNode<T> *head = nullptr;
+		int size = 0;
 
-        void destroy(CircularNode<T> *node);
+		void destroy(CircularNode<T> *node);
 
-    public:
-        CircularSinglyLinkedList() = default;
+	public:
+		CircularSinglyLinkedList() = default;
 
-        explicit inline CircularSinglyLinkedList(T data);
+		explicit CircularSinglyLinkedList(T data);
 
-        ~CircularSinglyLinkedList();
+		~CircularSinglyLinkedList();
 
-        inline bool isEmpty() override;
+		bool isEmpty() override;
 
-        inline int getSize() override;
+		int getSize() override;
 
-        void clear();
+		void clear();
 
-        void print() override;
+		void print() override;
 
-        void insertFront(T data);
+		void insertFront(T data);
 
-        void insertEnd(T data);
+		void insertEnd(T data);
 
-        void insertAt(T data, int pos);
+		void insertAt(T data, int pos);
 
-        T deleteFront();
+		T deleteFront();
 
-        T deleteEnd();
+		T deleteEnd();
 
-        T deleteAt(int pos);
-    };
+		T deleteAt(int pos);
+	};
 
 }
 

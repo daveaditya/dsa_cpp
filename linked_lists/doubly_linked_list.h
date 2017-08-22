@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "ClangTidyInspection"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
 #pragma once
@@ -7,37 +8,43 @@
 
 namespace linked_list {
 
-    using namespace nodes;
+	using namespace nodes;
 
-    template<class T>
-    class DoublyLinkedList : CommonMethods {
-    private:
-        DoublyNode<T> *head = nullptr;
-        int size = 0;
+	template<class T>
+	class DoublyLinkedList : public CommonMethods {
+	private:
+		DoublyNode<T> *head = nullptr;
+		int size = 0;
 
-    public:
-        DoublyLinkedList() = default;
+		void destroy(DoublyNode<T> *node);
 
-        explicit inline DoublyLinkedList(T data);
+	public:
+		DoublyLinkedList() = default;
 
-        inline bool isEmpty() override;
+		explicit DoublyLinkedList(T data);
 
-        inline int getSize() override;
+		~DoublyLinkedList();
 
-        void print() override;
+		bool isEmpty() override;
 
-        void insertFront(T data);
+		int getSize() override;
 
-        void insertEnd(T data);
+		void clear();
 
-        void insertAt(T data, int pos);
+		void print() override;
 
-        T deleteFront();
+		void insertFront(T data);
 
-        T deleteEnd();
+		void insertEnd(T data);
 
-        T deleteAt(int pos);
-    };
+		void insertAt(T data, int pos);
+
+		T deleteFront();
+
+		T deleteEnd();
+
+		T deleteAt(int pos);
+	};
 
 }
 
