@@ -1,11 +1,16 @@
 #pragma once
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ClangTidyInspection"
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
+
+#include "queue.h"
 #include "../linked_lists/singly_linked_list.h"
 
 namespace queue {
 
 	template<class T>
-	class LinkedQueue : nodes::CommonMethods {
+	class LinkedQueue : public Queue<T>, public nodes::CommonMethods {
 	private:
 		linked_list::SinglyLinkedList<T> *queue;
 
@@ -24,14 +29,16 @@ namespace queue {
 		bool isEmpty() override;
 
 		// Queue operations
-		T peek();
+		T peek() override;
 
-		void insert(T data);
+		void enqueue(T data) override;
 
-		T remove();
+		T dequeue() override;
 
 	};
 
 }
 
 #include "linked_queue.tpp"
+
+#pragma clang diagnostic pop

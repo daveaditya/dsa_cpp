@@ -4,13 +4,14 @@
 #pragma ide diagnostic ignored "ClangTidyInspection"
 
 #include "node.h"
+#include "linked_list.h"
 
 namespace linked_list {
 
 	using namespace nodes;
 
 	template<class T>
-	class SinglyLinkedList : public CommonMethods {
+	class SinglyLinkedList : public CommonMethods, public LinkedList<T> {
 	private:
 		SinglyNode<T> *head = nullptr;
 		int size = 0;
@@ -34,19 +35,19 @@ namespace linked_list {
 		void print() override;
 
 		// Linked List algorithms
-		void insertEnd(T value);
+		void insertEnd(T value) override;
 
-		void insertFront(T value);
+		void insertFront(T value) override;
 
-		void insertAt(int pos, T value);
+		void insertAt(int pos, T value) override;
 
-		T deleteFront();
+		T deleteFront() override;
 
-		T deleteEnd();
+		T deleteEnd() override;
 
-		T deleteAt(int pos);
+		T deleteAt(int pos) override;
 
-		T get(int pos);
+		T get(int pos) override;
 	};
 
 }

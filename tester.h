@@ -20,4 +20,12 @@ public:
 
 	static void arrayQueue();
 
+	static void linkedCircularQueue();
+
+	static void arrayCircularQueue();
+
+	static void linkedDeque();
+
+	static void arrayDeque();
+
 };

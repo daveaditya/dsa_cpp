@@ -13,7 +13,7 @@ using namespace std;
 namespace linked_list {
 
 	template<class T>
-	CircularSinglyLinkedList<T>::CircularSinglyLinkedList(T data) {
+	inline CircularSinglyLinkedList<T>::CircularSinglyLinkedList(T data) {
 		head = new CircularNode<T>(data);
 		size = 1;
 	}
@@ -26,12 +26,12 @@ namespace linked_list {
 	}
 
 	template<class T>
-	bool CircularSinglyLinkedList<T>::isEmpty() {
+	inline bool CircularSinglyLinkedList<T>::isEmpty() {
 		return size == 0;
 	}
 
 	template<class T>
-	int CircularSinglyLinkedList<T>::getSize() {
+	inline int CircularSinglyLinkedList<T>::getSize() {
 		return size;
 	}
 
@@ -92,13 +92,13 @@ namespace linked_list {
 
 
 	template<class T>
-	void CircularSinglyLinkedList<T>::insertAt(T data, int pos) {
-		if (pos >= size) {
+	void CircularSinglyLinkedList<T>::insertAt(int pos, T data) {
+		if (pos < 0 || pos >= size) {
 			throw IllegalPosition(pos);
 		}
 		auto *new_node = new CircularNode<T>(data);
 		CircularNode<T> *temp = head;
-		for (int i = 0; i < pos - 1; i++) {
+		for (int i = 0; i < pos; i++) {
 			temp = temp->getNext();
 		}
 		new_node->setNext(temp->getNext());
@@ -142,14 +142,14 @@ namespace linked_list {
 
 	template<class T>
 	T CircularSinglyLinkedList<T>::deleteAt(int pos) {
-		if (pos >= size) {
+		if (pos < 0 || pos >= size) {
 			throw IllegalPosition(pos);
 		}
 		if (head == nullptr) {
 			throw Underflow("Circular Linked list is empty");
 		}
 		auto *temp = head;
-		for (int i = 0; i < pos - 1; i++) {
+		for (int i = 0; i <= pos; i++) {
 			temp = temp->getNext();
 		}
 		auto to_delete = temp->getNext();
@@ -161,9 +161,21 @@ namespace linked_list {
 	}
 
 	template<class T>
+	T CircularSinglyLinkedList<T>::get(int pos) {
+		if (pos >= size) {
+			throw IllegalPosition(pos);
+		}
+		auto *temp = head;
+		for (int i = 0; i <= pos; ++i) {
+			temp = temp->getNext();
+		}
+		return temp->getData();
+	}
+
+	template<class T>
 	void CircularSinglyLinkedList<T>::print() {
 		if (size == 0) {
-			cout << "Empty" << endl;
+			cout << "Empty\n";
 			return;
 		}
 		auto temp = head;

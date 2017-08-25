@@ -24,24 +24,24 @@ namespace stack {
 
 
 	template<class T>
-	void LinkedStack<T>::print() {
+	inline void LinkedStack<T>::print() {
 		stack->print();
 	}
 
 	template<class T>
-	bool LinkedStack<T>::isEmpty() {
+	inline bool LinkedStack<T>::isEmpty() {
 		return stack->isEmpty();
 	}
 
 
 	template<class T>
-	int LinkedStack<T>::getSize() {
+	inline int LinkedStack<T>::getSize() {
 		return stack->getSize();
 	}
 
 
 	template<class T>
-	T LinkedStack<T>::peek() {
+	inline T LinkedStack<T>::peek() {
 		return stack->get(0);
 	}
 

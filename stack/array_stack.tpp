@@ -1,57 +1,25 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "UnusedImportStatement"
+
+#pragma once
+
 #include <iostream>
 #include "array_stack.h"
+#include "../exceptions.h"
 
 
 namespace stack {
 
 	template<class T>
-	ArrayStack<T>::ArrayStack(unsigned int max_size):MAX_SIZE(max_size) {
+	inline ArrayStack<T>::ArrayStack(unsigned int max_size):MAX_SIZE(max_size) {
 		array = new T[MAX_SIZE];
 	}
 
 
 	template<class T>
-	ArrayStack<T>::~ArrayStack() {
+	inline ArrayStack<T>::~ArrayStack() {
 		delete array;
-	}
-
-
-	template<class T>
-	int ArrayStack<T>::getSize() {
-		return MAX_SIZE;
-	}
-
-
-	template<class T>
-	unsigned int ArrayStack<T>::getFreeSpace() {
-		return MAX_SIZE - top;
-	}
-
-
-	template<class T>
-	T ArrayStack<T>::peek() {
-		return array[top];
-	}
-
-
-	template<class T>
-	T ArrayStack<T>::pop() {
-		if (top == -1) {
-			throw Underflow("Array Stack empty");
-		}
-		auto data = array[top];
-		top--;
-		return data;
-	}
-
-
-	template<class T>
-	void ArrayStack<T>::push(T data) {
-		if (top + 1 == MAX_SIZE) {
-			throw Overflow("Array Stack Overflow");
-		}
-		top++;
-		array[top] = data;
 	}
 
 
@@ -70,8 +38,51 @@ namespace stack {
 
 
 	template<class T>
-	bool ArrayStack<T>::isEmpty() {
-		return top == NOT_INITIALIZED;
+	inline bool ArrayStack<T>::isEmpty() {
+		return top == UNINITIALIZED;
+	}
+
+
+	template<class T>
+	inline int ArrayStack<T>::getSize() {
+		return MAX_SIZE;
+	}
+
+
+	template<class T>
+	inline unsigned int ArrayStack<T>::getAvailableSpace() {
+		return MAX_SIZE - top;
+	}
+
+
+	template<class T>
+	inline T ArrayStack<T>::peek() {
+		if (top != UNINITIALIZED) {
+			return array[top];
+		}
+		throw Underflow("Array Stack Uninitialized");
+	}
+
+
+	template<class T>
+	inline T ArrayStack<T>::pop() {
+		if (top == -1) {
+			throw Underflow("Array Stack empty");
+		}
+		auto data = array[top];
+		top--;
+		return data;
+	}
+
+
+	template<class T>
+	inline void ArrayStack<T>::push(T data) {
+		if (top + 1 == MAX_SIZE) {
+			throw Overflow("Array Stack Overflow");
+		}
+		top++;
+		array[top] = data;
 	}
 
 }
+#pragma clang diagnostic pop

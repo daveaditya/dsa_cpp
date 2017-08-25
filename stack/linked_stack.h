@@ -1,11 +1,15 @@
 #pragma once
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ClangTidyInspection"
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
 
+#include "stack.h"
 #include "../linked_lists/singly_linked_list.h"
 
 namespace stack {
 
 	template<class T>
-	class LinkedStack : public nodes::CommonMethods {
+	class LinkedStack : public Stack<T>, public nodes::CommonMethods {
 
 	private:
 		linked_list::SinglyLinkedList<T> *stack;
@@ -17,21 +21,23 @@ namespace stack {
 
 		~LinkedStack();
 
-		// stack operations
-		T peek();
-
 		void print() override;
 
 		bool isEmpty() override;
 
 		int getSize() override;
 
-		void push(T data);
+		// stack operations
+		T peek() override;
 
-		T pop();
+		void push(T data) override;
+
+		T pop() override;
 	};
 
 }
 
 
 #include "linked_stack.tpp"
+
+#pragma clang diagnostic pop

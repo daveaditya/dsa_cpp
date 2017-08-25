@@ -1,28 +1,30 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #pragma ide diagnostic ignored "ClangTidyInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
 
 #pragma once
 
+#include "queue.h"
 #include "../linked_lists/node.h"
+
 
 namespace queue {
 
-	const int UNINITIALIZED = -1;
-
 	template<class T>
-	class ArrayQueue : public Queue<T>, public nodes::CommonMethods {
-		int front;
+	class ArrayCircularQueue : public queue::Queue<T>, public nodes::CommonMethods {
+
 	private:
 		T *array;
+		const int MAX_SIZE;
+		int front;
 		int rear;
-		const unsigned int MAX_SIZE;
 
 	public:
-		explicit ArrayQueue(unsigned int max_size);
+		explicit ArrayCircularQueue(const unsigned int max_size);
 
-		~ArrayQueue();
+		~ArrayCircularQueue();
 
 		void print() override;
 
@@ -42,6 +44,6 @@ namespace queue {
 }
 
 
-#include "array_queue.tpp"
+#include "array_circular_queue.tpp"
 
 #pragma clang diagnostic pop

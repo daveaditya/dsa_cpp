@@ -130,8 +130,9 @@ namespace nodes {
 		}
 
 		explicit CircularDoublyNode(T data) {
-			CircularDoublyNode();
+			previous = this;
 			CircularDoublyNode::data = data;
+			next = this;
 		}
 
 		CircularDoublyNode *getPrevious() const {

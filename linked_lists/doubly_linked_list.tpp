@@ -13,13 +13,13 @@ using namespace std;
 namespace linked_list {
 
 	template<class T>
-	DoublyLinkedList<T>::DoublyLinkedList(T data) {
+	inline DoublyLinkedList<T>::DoublyLinkedList(T data) {
 		head = new DoublyNode<T>(data);
 		size = 1;
 	}
 
 	template<class T>
-	DoublyLinkedList<T>::~DoublyLinkedList() {
+	inline DoublyLinkedList<T>::~DoublyLinkedList() {
 		if (head != nullptr) {
 			destroy(head);
 			size = 0;
@@ -35,12 +35,12 @@ namespace linked_list {
 	}
 
 	template<class T>
-	bool DoublyLinkedList<T>::isEmpty() {
+	inline bool DoublyLinkedList<T>::isEmpty() {
 		return size == 0;
 	}
 
 	template<class T>
-	int DoublyLinkedList<T>::getSize() {
+	inline int DoublyLinkedList<T>::getSize() {
 		return size;
 	}
 
@@ -83,14 +83,14 @@ namespace linked_list {
 	}
 
 	template<class T>
-	void DoublyLinkedList<T>::insertAt(T data, int pos) {
-		if (pos > size) {
+	void DoublyLinkedList<T>::insertAt(int pos, T data) {
+		if (pos < 0 || pos >= size) {
 			cerr << "Illegal Position...\n";
 			return;
 		}
 		DoublyNode<T> *new_node = new DoublyNode<T>(data);
 		auto *temp = head;
-		for (int i = 0; i < pos - 1; ++i) {
+		for (int i = 0; i < pos; ++i) {
 			temp = temp->getNext();
 		}
 		temp->getNext()->setPrevious(new_node);
@@ -133,14 +133,14 @@ namespace linked_list {
 
 	template<class T>
 	T DoublyLinkedList<T>::deleteAt(int pos) {
-		if (pos > size) {
+		if (pos < 0 || pos >= size) {
 			throw IllegalPosition(pos);
 		}
 		if (head == nullptr) {
 			throw Underflow("Doubly Linked list is empty");
 		}
 		auto *temp = head;
-		for (int i = 0; i < pos; ++i) {
+		for (int i = 0; i <= pos; ++i) {
 			temp = temp->getNext();
 		}
 		auto *to_delete = temp->getNext();
@@ -152,10 +152,24 @@ namespace linked_list {
 		return data;
 	}
 
+
+	template<class T>
+	T DoublyLinkedList<T>::get(int pos) {
+		if (pos >= size) {
+			throw IllegalPosition(pos);
+		}
+		auto *temp = head;
+		for (int i = 0; i <= pos; ++i) {
+			temp = temp->getNext();
+		}
+		return temp->getData();
+	}
+
+
 	template<class T>
 	void DoublyLinkedList<T>::print() {
 		if (size == 0) {
-			cout << "Empty" << endl;
+			cout << "Empty\n";
 			return;
 		}
 		auto *temp = head;
@@ -164,7 +178,7 @@ namespace linked_list {
 			cout << temp->getData() << ", ";
 			temp = temp->getNext();
 		}
-		cout << " ]" << endl;
+		cout << " ]\n";
 	}
 
 }

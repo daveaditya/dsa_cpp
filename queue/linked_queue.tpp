@@ -34,13 +34,13 @@ namespace queue {
 
 
 	template<class T>
-	void LinkedQueue<T>::insert(T data) {
+	void LinkedQueue<T>::enqueue(T data) {
 		queue->insertEnd(data);
 	}
 
 
 	template<class T>
-	T LinkedQueue<T>::remove() {
+	T LinkedQueue<T>::dequeue() {
 		return queue->deleteFront();
 	}
 

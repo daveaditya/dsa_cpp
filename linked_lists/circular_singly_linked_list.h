@@ -1,6 +1,7 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "ClangTidyInspection"
 #pragma ide diagnostic ignored "OCUnusedStructInspection"
+
 #pragma once
 
 #include "node.h"
@@ -10,7 +11,7 @@ namespace linked_list {
 	using namespace nodes;
 
 	template<class T>
-	class CircularSinglyLinkedList : public CommonMethods {
+	class CircularSinglyLinkedList : public CommonMethods, public LinkedList<T> {
 	private:
 		CircularNode<T> *head = nullptr;
 		int size = 0;
@@ -32,17 +33,19 @@ namespace linked_list {
 
 		void print() override;
 
-		void insertFront(T data);
+		void insertFront(T data) override;
 
-		void insertEnd(T data);
+		void insertEnd(T data) override;
 
-		void insertAt(T data, int pos);
+		void insertAt(int pos, T data) override;
 
-		T deleteFront();
+		T deleteFront() override;
 
-		T deleteEnd();
+		T deleteEnd() override;
 
-		T deleteAt(int pos);
+		T deleteAt(int pos) override;
+
+		T get(int pos) override;
 	};
 
 }

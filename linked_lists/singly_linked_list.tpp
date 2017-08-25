@@ -13,7 +13,7 @@ using namespace std;
 namespace linked_list {
 
 	template<class T>
-	SinglyLinkedList<T>::SinglyLinkedList(T value) {
+	inline SinglyLinkedList<T>::SinglyLinkedList(T value) {
 		head = new SinglyNode<T>(value);
 		size = 1;
 	}
@@ -35,13 +35,13 @@ namespace linked_list {
 
 
 	template<class T>
-	int SinglyLinkedList<T>::getSize() {
+	inline int SinglyLinkedList<T>::getSize() {
 		return size;
 	}
 
 
 	template<class T>
-	bool SinglyLinkedList<T>::isEmpty() {
+	inline bool SinglyLinkedList<T>::isEmpty() {
 		return (size == 0);
 	}
 
@@ -79,14 +79,13 @@ namespace linked_list {
 
 	template<class T>
 	void SinglyLinkedList<T>::insertAt(int pos, T value) {
-		if (pos >= getSize()) {
-			cerr << "Illegal Index";
-			return;
+		if (pos < 0 || pos >= size) {
+			throw IllegalPosition(pos);
 		}
 		auto *new_node = new SinglyNode<T>();
 		new_node->setData(value);
 		SinglyNode<T> *temp = head, *prev = temp;
-		for (int i = 0; i <= pos; ++i) {
+		for (int i = 0; i < pos; ++i) {
 			prev = temp;
 			temp = temp->getNext();
 		}
@@ -133,11 +132,11 @@ namespace linked_list {
 		if (head == nullptr) {
 			throw Underflow("Linked list is empty");
 		}
-		if (pos >= size) {
+		if (pos < 0 || pos >= size) {
 			throw IllegalPosition(pos);
 		}
 		SinglyNode<T> *temp = head, *prev = temp;
-		for (int i = 0; i < pos; ++i) {
+		for (int i = 0; i <= pos; ++i) {
 			prev = temp;
 			temp = temp->getNext();
 		}
@@ -154,7 +153,7 @@ namespace linked_list {
 		if (head == nullptr) {
 			throw Underflow("Linked list is empty");
 		}
-		if (pos >= size) {
+		if (pos < 0 || pos >= size) {
 			throw IllegalPosition(pos);
 		}
 		SinglyNode<T> *temp = head;
