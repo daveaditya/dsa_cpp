@@ -39,6 +39,6 @@ set(SOURCE_FILES
         queue/linked_deque.h
         queue/array_deque.h
         queue/linked_priority_queue.h
-)
+        sorting/sorting.cpp sorting/sorting.h tree/binary_tree.tpp tree/binary_tree.h tree/node.h tree/binary_search_tree.tpp tree/binary_search_tree.h util/utility.cpp util/utility.h search/Searching.cpp search/Searching.h)
 
 add_executable(Data_Structures ${SOURCE_FILES})

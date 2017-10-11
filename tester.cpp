@@ -11,6 +11,11 @@
 #include "queue/linked_deque.h"
 #include "queue/array_circular_queue.h"
 #include "queue/array_deque.h"
+#include "tree/binary_tree.h"
+#include "tree/binary_search_tree.h"
+#include "sorting/sorting.h"
+#include "util/utility.h"
+#include "search/Searching.h"
 
 
 void Tester::singlyLinkedList() {
@@ -280,5 +285,177 @@ void Tester::arrayDeque() {
 	a_dq->dequeueFront();
 	a_dq->print();
 	delete a_dq;
+
+}
+
+
+void Tester::binaryTree() {
+
+	cout << "\n\n" << "***BINARY TREE***" << endl;
+	auto *n = new tree::Node<int>(1);
+	n->setLeftChild(new tree::Node<int>(2));
+	n->setRightChild(new tree::Node<int>(3));
+	auto *bt = new tree::BinaryTree<int>(n);
+	bt->getPrefix();
+	bt->getInfix();
+	bt->getPostfix();
+	delete bt;
+
+}
+
+
+void Tester::binarySearchTree() {
+
+	cout << "\n\n" << "***BINARY SEARCH TREE***" << endl;
+	auto *bst = new tree::BinarySearchTree<int>();
+	for (int i = 0; i < 10; ++i) {
+		bst->insert(i);
+	}
+	bst->insert(-2);
+	bst->insert(-10);
+	bst->insert(100);
+	bst->insert(50);
+	bst->getPrefix();
+	bst->getInfix();
+	bst->getPostfix();
+	delete bst;
+
+}
+
+
+void Tester::bubbleSort() {
+
+	cout << "\n\n" << "***BUBBLE SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::bubbleSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::selectionSort() {
+
+	cout << "\n\n" << "***SELECTION SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::selectionSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::insertionSort() {
+
+	cout << "\n\n" << "***INSERTION SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::insertionSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::mergeSort() {
+
+	cout << "\n\n" << "***MERGE SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::mergeSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::quickSort() {
+
+	cout << "\n\n" << "***QUICK SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::quickSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::radixSort() {
+
+	cout << "\n\n" << "***QUICK SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::quickSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::bucketSort() {
+
+	cout << "\n\n" << "***BUCKET SORT***" << endl;
+	cout << "Unsorted : ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::quickSort(array, 10);
+	cout << "Sorted : ";
+	Utility::printArray(array, 10);
+
+}
+
+
+void Tester::linearSearch() {
+
+	cout << "\n\n" << "***LINEAR SEARCH***" << endl;
+	cout << "Array: ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	cout << "\nElement 76's first instance at ... " << algorithms::Searching::linearSearch(array, 10, 76);
+	cout << "\nElement 99 at ... " << algorithms::Searching::linearSearch(array, 10, 99);
+	cout << endl;
+
+}
+
+
+void Tester::binarySearch() {
+
+	cout << "\n\n" << "***BINARY SEARCH***" << endl;
+	cout << "Unsorted Array: ";
+	int array[] = {
+			23, 76, 12, 3, 4, 9, 0, 12, 43, 76
+	};
+	Utility::printArray(array, 10);
+	algorithms::Sorting::bubbleSort(array, 10);
+	cout << "Sorted Array: ";
+	Utility::printArray(array, 10);
+	cout << "\nElement 76's first instance at ... " << algorithms::Searching::binarySearch(array, 10, 76);
+	cout << "\nElement 99 at ... " << algorithms::Searching::binarySearch(array, 10, 99);
+	cout << endl;
 
 }

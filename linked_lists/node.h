@@ -160,6 +160,7 @@ namespace nodes {
 		}
 	};
 
+
 	class CommonMethods {
 	public:
 		virtual void print() = 0;

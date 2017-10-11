@@ -2,6 +2,7 @@
 
 int main() {
 
+	// Linear Data Structures
 	Tester::singlyLinkedList();
 	Tester::circularLinkedList();
 	Tester::doublyLinkedList();
@@ -15,6 +16,26 @@ int main() {
 	Tester::arrayCircularQueue();
 	Tester::linkedDeque();
 	Tester::arrayDeque();
+
+
+	// Non Linear Data Structures
+	Tester::binaryTree();
+	Tester::binarySearchTree();
+
+
+	// Sorting Algorithms
+	Tester::bubbleSort();
+	Tester::selectionSort();
+	Tester::insertionSort();
+	Tester::mergeSort();
+	Tester::quickSort();
+	Tester::radixSort();
+	Tester::bucketSort();
+
+
+	// Searching Algorithms
+	Tester::linearSearch();
+	Tester::binarySearch();
 
 	return 0;
 
