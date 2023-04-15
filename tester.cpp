@@ -400,7 +400,7 @@ void Tester::quickSort() {
 
 void Tester::radixSort() {
 
-	cout << "\n\n" << "***QUICK SORT***" << endl;
+	cout << "\n\n" << "***RADIX SORT***" << endl;
 	cout << "Unsorted : ";
 	int array[] = {
 			23, 76, 12, 3, 4, 9, 0, 12, 43, 76

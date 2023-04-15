@@ -26,7 +26,7 @@ namespace algorithms {
 
 		static void quickSort(int *array, int length);
 
-		static void heapSort(int *arry, int length);
+		static void heapSort(int *array, int length);
 
 		static void radixSort(int *array, int length);
 

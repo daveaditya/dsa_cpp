@@ -158,7 +158,7 @@ namespace algorithms {
 	}
 
 
-	void Sorting::heapSort(int *arry, int length) {
+	void Sorting::heapSort(int *array, int length) {
 
 	}
 
